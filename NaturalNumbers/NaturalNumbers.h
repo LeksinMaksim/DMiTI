@@ -14,6 +14,7 @@ class NaturalNumbers{
 		std::vector<size_t> getDigits();
 		size_t getSize();
 		std::string getStrReference();
+		void setDigit(size_t Digit, size_t position);
 };
 
 #endif

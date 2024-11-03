@@ -29,3 +29,8 @@ std::string NaturalNumbers::getStrReference(){
 	}
 	return result;	
 }
+
+void NaturalNumbers::setDigit(size_t digit, size_t position){
+	if (position >= this->getSize()) return;
+	this->digits.at(position) = digit;
+}
