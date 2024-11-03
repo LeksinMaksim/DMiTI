@@ -1,4 +1,4 @@
-#include "NaturalNumbers.h"
+#include "COM_NN_D.h"
 
 size_t compareNaturalNaturalNumbers(NaturalNumbers firstNumber, NaturalNumbers secondNumber){
 	int resultOfCompare = firstNumber.getSize() - secondNumber.getSize();

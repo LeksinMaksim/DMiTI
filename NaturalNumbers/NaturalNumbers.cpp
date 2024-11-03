@@ -2,6 +2,11 @@
 
 
 NaturalNumbers::NaturalNumbers(size_t number){
+	if (number == 0){
+		this->digits.resize(1);
+		this->digits.at(0) = 0;
+		this->size = 1;
+	}
 	while (number > 0){
 		this->digits.insert(this->digits.begin(), number % 10);
 		number /= 10;
@@ -33,4 +38,15 @@ std::string NaturalNumbers::getStrReference(){
 void NaturalNumbers::setDigit(size_t digit, size_t position){
 	if (position >= this->getSize()) return;
 	this->digits.at(position) = digit;
+}
+
+void NaturalNumbers::setDigits(std::vector<size_t> newDigits){
+	this->digits.clear();
+	this->digits = newDigits;
+	this->size = newDigits.size();
+}
+
+size_t NaturalNumbers::getDigit(size_t position){
+	if (position >= this->getSize()) return 0;
+	return this->digits.at(position);	
 }

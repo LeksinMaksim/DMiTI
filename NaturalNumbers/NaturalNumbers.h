@@ -15,6 +15,8 @@ class NaturalNumbers{
 		size_t getSize();
 		std::string getStrReference();
 		void setDigit(size_t Digit, size_t position);
+		void setDigits(std::vector<size_t> newDigits);
+		size_t getDigit(size_t position);
 };
 
 #endif
