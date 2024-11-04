@@ -56,7 +56,7 @@ void Integer::setDigit(size_t digit, size_t position){
 void Integer::setDigits(std::vector<size_t> newDigits){
 	this->digits.clear();
 	this->digits = newDigits;
-	this->size = newDigits.size();
+	this->setSize(newDigits.size());
 }
 
 void Integer::setSign(bool newSign){
