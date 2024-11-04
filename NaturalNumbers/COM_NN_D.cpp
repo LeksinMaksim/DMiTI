@@ -5,7 +5,7 @@ short COM_NN_D(NaturalNumbers firstNumber, NaturalNumbers secondNumber){
 	else if (secondNumber.getSize() > firstNumber.getSize())
 		return 1;
 	else{
-		for (int index = firstNumber.getSize() - 1; index >= 0; index--){
+		for (int index = 0; index < firstNumber.getSize(); index++){
 			if (firstNumber.getDigits()[index] > secondNumber.getDigits()[index]){
                 return 2;
             }
