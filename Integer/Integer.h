@@ -3,11 +3,7 @@
 
 #include <iostream>
 #include <vector>
-
-enum StatusCode{
-	Successfull,
-	Fail
-};
+#include "StatusCode.h"
 
 class Integer{
 	private:
