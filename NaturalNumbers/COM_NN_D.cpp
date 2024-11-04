@@ -4,8 +4,8 @@ size_t compareNaturalNaturalNumbers(NaturalNumbers firstNumber, NaturalNumbers s
 	int resultOfCompare = firstNumber.getSize() - secondNumber.getSize();
 	if (resultOfCompare == 0){
 		for (size_t i = 0; i < firstNumber.getSize(); i++){
-			if (firstNumber.getDigit(i) == secondNumber.getDigit(i)) continue;
-			return firstNumber.getDigit(i) > secondNumber.getDigit(i) ? 2 : 1;
+			if (firstNumber.getDigit(i).second == secondNumber.getDigit(i).second) continue;
+			return firstNumber.getDigit(i).second > secondNumber.getDigit(i).second ? 2 : 1;
 		}
 		return 0;	
 	};

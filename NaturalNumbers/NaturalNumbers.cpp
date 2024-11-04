@@ -1,5 +1,8 @@
 #include "NaturalNumbers.h"
 
+NaturalNumbers::NaturalNumbers(){
+	this->size = 0;
+}
 
 NaturalNumbers::NaturalNumbers(size_t number){
 	if (number == 0){
@@ -26,6 +29,10 @@ std::vector<size_t> NaturalNumbers::getDigits(){
 size_t NaturalNumbers::getSize(){
 	return this->size;
 }
+
+void NaturalNumbers::setSize(size_t newSize){
+	this->size = newSize;
+}
 		
 std::string NaturalNumbers::getStrReference(){
 	std::string result;
@@ -43,10 +50,18 @@ void NaturalNumbers::setDigit(size_t digit, size_t position){
 void NaturalNumbers::setDigits(std::vector<size_t> newDigits){
 	this->digits.clear();
 	this->digits = newDigits;
-	this->size = newDigits.size();
+	this->setSize(newDigits.size());
 }
 
-size_t NaturalNumbers::getDigit(size_t position){
-	if (position >= this->getSize()) return 0;
-	return this->digits.at(position);	
+std::pair<StatusCode, size_t> NaturalNumbers::getDigit(size_t position){
+	if (position >= this->getSize()) return {Fail, 0};
+	return {Successfull, this->digits.at(position)};	
+}
+
+NaturalNumbers& NaturalNumbers::operator=(const NaturalNumbers& number){
+	if(&number != this){
+		this->digits.clear();
+		this->setDigits(number.digits);
+	}
+	return *this;
 }
