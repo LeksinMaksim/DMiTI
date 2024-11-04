@@ -41,11 +41,11 @@ std::vector<size_t> Integer::getDigits(){
 	return this->digits;
 }
 
-size_t Integer::getDigit(size_t position){
+std::pair<StatusCode, size_t> Integer::getDigit(size_t position){
 	if (position >= this->size){
-		return 0;
+		return {Fail, 0};
 	}
-	return this->digits.at(position);
+	return {Successfull, this->digits.at(position)};
 }
 
 void Integer::setDigit(size_t digit, size_t position){

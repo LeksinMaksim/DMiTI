@@ -4,6 +4,11 @@
 #include <iostream>
 #include <vector>
 
+enum StatusCode{
+	Successfull,
+	Fail
+};
+
 class Integer{
 	private:
 		bool sign;
@@ -17,7 +22,7 @@ class Integer{
 		size_t getSize();
 		void setSize(size_t newSize);
 		std::vector<size_t> getDigits();
-		size_t getDigit(size_t position);
+		std::pair<StatusCode, size_t> getDigit(size_t position);
 		void setDigit(size_t digit, size_t position);
 		void Integer::setDigits(std::vector<size_t> newDigits);
 		void setSign(bool newSign);
