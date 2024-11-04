@@ -12,6 +12,7 @@ Integer::Integer(int number){
 		this->digits.at(0) = 0;
 		this->size = 1;
 	}
+	if (this->sign == false) number = -number;
 	while (number > 0){
 		this->digits.insert(this->digits.begin(), number % 10);
 		number /= 10;
@@ -35,6 +36,14 @@ size_t Integer::getSize(){
 
 void Integer::setSize(size_t newSize){
 	this->size = newSize;
+}
+
+std::string Integer::getStrReference(){
+	std::string result = this->getSign() ? "" : "-";
+	for (size_t digit : this->digits){
+		result += std::to_string(digit);
+	}
+	return result;
 }
 
 std::vector<size_t> Integer::getDigits(){
