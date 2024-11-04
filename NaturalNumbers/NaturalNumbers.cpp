@@ -1,5 +1,8 @@
 #include "NaturalNumbers.h"
 
+NaturalNumbers::NaturalNumbers(){
+	this->size = 0;
+}
 
 NaturalNumbers::NaturalNumbers(size_t number){
 	if (number == 0){
@@ -47,7 +50,7 @@ void NaturalNumbers::setDigit(size_t digit, size_t position){
 void NaturalNumbers::setDigits(std::vector<size_t> newDigits){
 	this->digits.clear();
 	this->digits = newDigits;
-	this->size = newDigits.size();
+	this->setSize(newDigits.size());
 }
 
 size_t NaturalNumbers::getDigit(size_t position){

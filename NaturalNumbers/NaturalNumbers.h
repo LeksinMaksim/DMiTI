@@ -9,6 +9,7 @@ class NaturalNumbers{
 		size_t size;
 		std::vector<size_t> digits;
 	public:
+		NaturalNumbers();
 		NaturalNumbers(size_t number);
 		NaturalNumbers(const NaturalNumbers& otherNumber);
 		std::vector<size_t> getDigits();
