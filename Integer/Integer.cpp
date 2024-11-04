@@ -1,16 +1,17 @@
 #include "Integer.h"
 
 Integer::Integer(){
-	this->sign = true;
+	this->sign = NullStatus;
 	this->size = 0;
 }
 
 Integer::Integer(int number){
-	this->sign = number >= 0 ? true : false;
+	this->sign = number >= 0 ? Positive : Negative;
 	if (number == 0){
 		this->digits.resize(1);
 		this->digits.at(0) = 0;
 		this->size = 1;
+		this->setSign(NullStatus);
 	}
 	if (this->sign == false) number = -number;
 	while (number > 0){
@@ -26,7 +27,7 @@ Integer::Integer(const Integer& otherNumber){
 	this->digits = otherNumber.digits;
 }	
 
-bool Integer::getSign(){
+SignStatus Integer::getSign(){
 	return this->sign;
 }
 
@@ -39,7 +40,9 @@ void Integer::setSize(size_t newSize){
 }
 
 std::string Integer::getStrReference(){
-	std::string result = this->getSign() ? "" : "-";
+	if (this->getSize() == 0) return "";
+	if (this->getSize() == 1 && this->getDigit(0).second == 0) return "0";
+	std::string result = (this->getSign() == Positive) ? "" : "-";
 	for (size_t digit : this->digits){
 		result += std::to_string(digit);
 	}
@@ -68,7 +71,7 @@ void Integer::setDigits(std::vector<size_t> newDigits){
 	this->setSize(newDigits.size());
 }
 
-void Integer::setSign(bool newSign){
+void Integer::setSign(SignStatus newSign){
 	this->sign = newSign;
 }
 
