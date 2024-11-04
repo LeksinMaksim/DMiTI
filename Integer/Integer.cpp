@@ -28,6 +28,10 @@ size_t Integer::getSize(){
 	return this->size;
 }
 
+void Integer::setSize(size_t newSize){
+	this->size = newSize;
+}
+
 std::vector<size_t> Integer::getDigits(){
 	return this->digits;
 }
@@ -52,4 +56,13 @@ void Integer::setDigits(std::vector<size_t> newDigits){
 
 void Integer::setSign(bool newSign){
 	this->sign = newSign;
+}
+
+Integer& Integer::operator=(const Integer& number){
+	if (&number != this){
+		this->setSign(number.sign);
+		this->digits.clear();
+		this->setDigits(number.digits);
+	}
+	return *this;
 }
