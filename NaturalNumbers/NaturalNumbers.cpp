@@ -53,9 +53,9 @@ void NaturalNumbers::setDigits(std::vector<size_t> newDigits){
 	this->setSize(newDigits.size());
 }
 
-size_t NaturalNumbers::getDigit(size_t position){
-	if (position >= this->getSize()) return 0;
-	return this->digits.at(position);	
+std::pair<StatusCode, size_t> NaturalNumbers::getDigit(size_t position){
+	if (position >= this->getSize()) return {Fail, 0};
+	return {Successfull, this->digits.at(position)};	
 }
 
 NaturalNumbers& NaturalNumbers::operator=(const NaturalNumbers& number){
