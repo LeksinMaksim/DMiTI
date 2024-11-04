@@ -1,5 +1,10 @@
 #include "Integer.h"
 
+Integer::Integer(){
+	this->sign = true;
+	this->size = 0;
+}
+
 Integer::Integer(int number){
 	this->sign = number >= 0 ? true : false;
 	if (number == 0){

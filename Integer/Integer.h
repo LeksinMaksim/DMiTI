@@ -10,6 +10,7 @@ class Integer{
 		size_t size;
 		std::vector<size_t> digits;
 	public:
+		Integer();
 		Integer(int number);
 		Integer(const Integer& otherNumber);
 		bool getSign();
