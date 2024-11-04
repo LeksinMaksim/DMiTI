@@ -1,14 +1,30 @@
+#ifndef INTEGER_HEADER
+#define INTEGER_HEADER
+
 #include <iostream>
 #include <vector>
+#include "./StatusCode.h"
+#include "./SignStatus.h"
 
 class Integer{
-  public:
-    int sign; // 0 - plus, 1 - minus
-    int size;
-    std::vector<int> digits;
-    Integer();
-    Integer(int sign, int size, std::vector<int> digits);
-    Integer(const Integer& another_number);
-    Integer(int number);
-    Integer operator=(Integer& another_number);
+	private:
+		SignStatus sign;
+		size_t size;
+		std::vector<size_t> digits;
+	public:
+		Integer();
+		Integer(int number);
+		Integer(const Integer& otherNumber);
+		SignStatus getSign();
+		size_t getSize();
+		void setSize(size_t newSize);
+		std::string getStrReference();
+		std::vector<size_t> getDigits();
+		std::pair<StatusCode, size_t> getDigit(size_t position);
+		void setDigit(size_t digit, size_t position);
+		void setDigits(std::vector<size_t> newDigits);
+		void setSign(SignStatus newSign);
+		Integer& operator=(const Integer& number);
 };
+
+#endif

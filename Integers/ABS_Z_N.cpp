@@ -1,8 +1,7 @@
-#include "Integer.h"
-#include <stdio.h>
+#include "ABS_Z_N.h"
 Integer ABS_Z_N(Integer number){   
     Integer result;
     result = number;
-    result.sign = 0;
+    result.setSign(Positive);
     return result;
 }
