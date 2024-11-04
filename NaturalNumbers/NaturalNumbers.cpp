@@ -26,6 +26,10 @@ std::vector<size_t> NaturalNumbers::getDigits(){
 size_t NaturalNumbers::getSize(){
 	return this->size;
 }
+
+void NaturalNumbers::setSize(size_t newSize){
+	this->size = newSize;
+}
 		
 std::string NaturalNumbers::getStrReference(){
 	std::string result;
@@ -49,4 +53,12 @@ void NaturalNumbers::setDigits(std::vector<size_t> newDigits){
 size_t NaturalNumbers::getDigit(size_t position){
 	if (position >= this->getSize()) return 0;
 	return this->digits.at(position);	
+}
+
+NaturalNumbers& NaturalNumbers::operator=(const NaturalNumbers& number){
+	if(&number != this){
+		this->digits.clear();
+		this->setDigits(number.digits);
+	}
+	return *this;
 }

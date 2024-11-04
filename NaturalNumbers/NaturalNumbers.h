@@ -13,10 +13,12 @@ class NaturalNumbers{
 		NaturalNumbers(const NaturalNumbers& otherNumber);
 		std::vector<size_t> getDigits();
 		size_t getSize();
+		void setSize(size_t newSize);
 		std::string getStrReference();
 		void setDigit(size_t Digit, size_t position);
 		void setDigits(std::vector<size_t> newDigits);
 		size_t getDigit(size_t position);
+		NaturalNumbers& operator=(const NaturalNumbers& number);
 };
 
 #endif
