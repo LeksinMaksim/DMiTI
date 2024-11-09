@@ -38,6 +38,5 @@ NaturalNumbers ADD_NN_N(NaturalNumbers firstNumber, NaturalNumbers secondNumber)
     std::reverse(first.begin(), first.end());
     NaturalNumbers newNumber = {0};
     newNumber.setDigits(first);
-    newNumber.setSize(first.size());
     return newNumber;
 }
