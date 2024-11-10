@@ -61,7 +61,7 @@ clean:
 При каждом пуше, код автоматически будет проверяться в Github Actions, проводя все прописанные тесты. Таким образом, мы будем уверены, что каждый модуль точно исправно работает.
 
 # FOR MORDOR
-Three Rings for the Elven-kings under the sky,
+Three Rings for the Elven-kings under the sky,\n
 Seven for the Dwarf-lords in their halls of stone,
 Nine for Mortal Men doomed to die,
 One for the Dark Lord on his dark throne
