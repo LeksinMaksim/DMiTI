@@ -12,7 +12,7 @@
 Александр Снигирёв
 
 N-3, N-8, N-13, Z-4, Z-9, Q-4, P-1, P-6, P-11
-# FOR MORDOR
+
 
 ## Документирование кода
 
@@ -59,3 +59,47 @@ clean:
 Имея небольшой опыт работы с GitHub Actions, я беру на себя ответственность за его реализацию и поддержку (но не обещаю :)). Но для начала нам необходимо написать тесты для каждого модуля.
 
 При каждом пуше, код автоматически будет проверяться в Github Actions, проводя все прописанные тесты. Таким образом, мы будем уверены, что каждый модуль точно исправно работает.
+
+# FOR MORDOR
+   		    / \
+                   / | \  Three Rings for the Elvin-Kings under the sky.
+                  /  |  \ Seven for the DwarfLords in their halls of stone.
+                 |   |   |    Nine for the Mortal Men doomed to die.
+                 |   |   |    One for the Dark Lord on his dark throne.
+                 |   |   |In the Land of Mordor where the Shadow Lies.
+                 |   |   |
+                 |   |   |  One Ring to rule them all,One Ring to find them,
+                 |   |   |One Ring to bring them all and in the Darkness
+                 |   |   |   Bind Them
+                 |   |   |  In the Land of Mordor where the Shadows Lie.
+                 |   |   |
+                 |   |   |
+                 |   |   |           This quote is from my Favorite Book
+                 |   |   |                        "Lord Of THe Rings"
+                 |   |   |                              by J.R.R. Tolkien
+                 |   |   |
+                 |   |   |
+                 |   |   |
+                 |   |   |
+                 |   |   |                      .____---^^     ^^---____.
+                 |   |   |                      TI      *       *      IT
+                 |   |   |                      !I          *          I!
+                 |  / \  |                       X                     X
+/\               |/     \|               /\      XL                   JX
+\ \_____________/         \_____________/ /      II        / \        II
+ \______________\         /______________/       II   / \ /   \ / \   II
+                 \       /                        X  /   v     v   \  X
+                 |\\   //|                        ``/    _     _    \''
+                 |//\ ///|                         \\- _-_ -_- _-_ -//
+                 |///////|                           \\_-  -_-  -_//
+                 |///////|                             ``       ''
+                 |///////|                               ``-_-''
+                 |///////|
+                 |///////|
+                 |///////|
+                / \/\_/\/ \
+               |\_/\/ \/\_/|
+               |/ \/\ /\/ \|
+                \_/\/_\/\_/
+                  \_/_\_/
+
