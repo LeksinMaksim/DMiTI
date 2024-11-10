@@ -1,0 +1,1 @@
+g++ test_polynomials.cpp ../Rationals/Rationals.cpp ../Integers/Integer.cpp ../NaturalNumbers/NaturalNumbers.cpp Polynomials.cpp && ./a.out
