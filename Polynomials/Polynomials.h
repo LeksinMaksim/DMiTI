@@ -6,25 +6,19 @@
 #include "../Rationals/Rationals.h"
 #include "../NaturalNumbers/NaturalNumbers.h"
 
-class Node
+class Elem
 {
     public:
-        Node(Rationals multiplier, Integer degree);
-        Node(Node& other);
+        Elem(Rationals multiplier, Integer degree);
+        Elem(Elem& other);
         Rationals getNodeMultiplier();
         Integer getNodeDegree();
-        Node* getNext();
-        Node* getPrev();
         void setNodeMultiplie(Rationals multiplier);
         void setNodeDegree(Integer degree);
-        void setNext(Node* next);
-        void setPrev(Node* prev);
-        Node& operator=(const Node& other);
+        Elem& operator=(const Elem& other);
     private:
         Rationals multiplier;
         Integer degree;
-        Node* next;
-        Node* prev;
 };
 
 class Polynomials
@@ -35,15 +29,15 @@ class Polynomials
         Polynomials(Polynomials& other);
         void insertElem(Rationals multiplier, Integer degree);
         void popElem(Integer degree);
-        Node* getElem(Integer degree);
-        Node* getHead();
-        void setHead(Node* root);
+        Elem* getElem(Integer degree);
+        std::vector<Elem*> getElems();
+        void setElems(std::vector<Elem*> elems);
         size_t getSize();
         Integer getMaxDegree();
         std::string getStrReference();
         Polynomials& operator=(const Polynomials& other);
     private:
-        Node* head;
+        std::vector<Elem*>elems;
         size_t size;
         Integer maxDegree;
 };

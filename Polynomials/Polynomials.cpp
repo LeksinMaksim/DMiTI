@@ -2,60 +2,38 @@
 
 //Node
 
-Node::Node(Rationals multiplier, Integer degree)
+Elem::Elem(Rationals multiplier, Integer degree)
 {
     this->multiplier = multiplier;
     this->degree = degree;
-    this->next = nullptr;
-    this->prev = nullptr;
 }
-Node::Node(Node& other)
+Elem::Elem(Elem& other)
 {
     this->multiplier = other.multiplier;
     this->degree = other.degree;
-    this->next = other.next;
-    this->prev = other.prev;
 }
-Rationals Node::getNodeMultiplier()
+Rationals Elem::getNodeMultiplier()
 {
     return this->multiplier;
 }
-Integer Node::getNodeDegree()
+Integer Elem::getNodeDegree()
 {
     return this->degree;
 }
-Node* Node::getNext()
-{
-    return this->next;
-}
-Node* Node::getPrev()
-{
-    return this->prev;
-}
-void Node::setNodeDegree(Integer degree)
+void Elem::setNodeDegree(Integer degree)
 {
     this->degree = degree;
 }
-void Node::setNodeMultiplie(Rationals multiplier)
+void Elem::setNodeMultiplie(Rationals multiplier)
 {
     this->multiplier = multiplier;
 }
-void Node::setNext(Node* next)
-{
-    this->next = next;
-}
-void Node::setPrev(Node* prev)
-{
-    this->prev = prev;
-}
-Node& Node::operator=(const Node& other)
+Elem& Elem::operator=(const Elem& other)
 {
     if(this != &other)
     {
         this->degree = other.degree;
         this->multiplier = other.multiplier;
-        this->next = other.next;
-        this->prev = other.prev;
     }
     return *this;
 }
@@ -66,13 +44,13 @@ Node& Node::operator=(const Node& other)
 
 Polynomials::Polynomials()
 {
-    this->head = nullptr;
+    this->elems = std::vector<Elem*>();
     this->size = 0;
     this->maxDegree = Integer(-10000);
 }
 Polynomials::Polynomials(std::string input)
 {
-    this->head = nullptr;
+    this->elems = std::vector<Elem*>();
     this->size = 0;
     this->maxDegree = Integer(0);
     Rationals multiplier = Rationals();
@@ -149,7 +127,7 @@ Polynomials::Polynomials(std::string input)
 }
 Polynomials::Polynomials(Polynomials& other)
 {
-    this->head = other.head;
+    this->elems = other.elems;
     this->maxDegree = other.maxDegree;
     this->size = other.size;
 }
@@ -157,84 +135,58 @@ void Polynomials::insertElem(Rationals multiplier, Integer degree)
 {
     if(degree > this->maxDegree)
         this->maxDegree = degree;
-    if(multiplier.getStrReference().compare(0,1,"0"))
-        this->size++;
-    Node* newNode = new Node(multiplier, degree);
-    if(this->head == nullptr)
-    {
-        this->head = newNode;
+    if(!multiplier.getStrReference().compare(0,1,"0"))
         return;
-    }
-    Node* current = this->head;
-    while(current->getNext() != nullptr && degree > current->getNodeDegree())
-        current = current->getNext();
-    if(degree > current->getNodeDegree())
-    {
-        newNode->setPrev(current);
-        current->setNext(newNode);
-    }
-    else if(current->getNodeDegree() == degree)
-    {
-        current->setNodeDegree(degree);
-    }
-    else if(current->getNodeDegree() > degree)
-    {
-        newNode->setNext(current);
-        if(this->head != current)
-            current->getPrev()->setNext(newNode);
-        else
-            this->head = newNode;
-        newNode->setPrev(current->getPrev());
-        current->setPrev(newNode);
-    }
+    this->size++;
+    Elem* newNode = new Elem(multiplier, degree);
+    size_t i = 0;
+    while(i < this->elems.size() && degree > this->elems[i]->getNodeDegree())
+        i++;
+    if(i == this->elems.size())
+        this->elems.push_back(newNode);
+    else if(i == 0)
+        this->elems.insert(this->elems.begin(), newNode);
+    else if(i != this->elems.size() && degree > this->elems[i-1]->getNodeDegree())
+        this->elems.insert(this->elems.begin() + i, newNode);
+    else if(this->elems[i]->getNodeDegree() == degree)
+        this->elems[i]->setNodeMultiplie(multiplier);
+    else if(this->elems[i]->getNodeDegree() > degree)
+        this->elems.insert(this->elems.begin() + i, newNode);
 }
 void Polynomials::popElem(Integer degree)
 {
-    if(this->head == nullptr)
-        return;
-    Node* current = this->head;
-    while(current->getNext() != nullptr && degree > current->getNodeDegree())
-        current = current->getNext();
-    if(current->getNodeDegree() == degree)
+    size_t i = 0;
+    while(i < this->elems.size() && degree > this->elems[i]->getNodeDegree())
+        i++;
+    if(i < this->elems.size() && this->elems[i]->getNodeDegree() == degree)
     {
         this->size--;
-        if(current->getNodeDegree() == this->maxDegree)
+        if(this->elems[i]->getNodeDegree() == this->maxDegree)
         {
-            if(current->getPrev() != nullptr)
-                this->maxDegree = current->getPrev()->getNodeDegree();
+            if(i - 1 >= 0)
+                this->maxDegree = elems[i-1]->getNodeDegree();
         }
-        if(this->head == current)
-        {
-            this->head = current->getNext();
-            current->setPrev(nullptr);
-            return;
-        }
-        current->getPrev()->setNext(current->getNext());
-        if(current->getNext() != nullptr)
-            current->getNext()->setPrev(current->getPrev());
+        this->elems.erase(this->elems.begin() + i);
     }
-    return;
 }
-Node* Polynomials::getElem(Integer degree)
+Elem* Polynomials::getElem(Integer degree)
 {
-    Node* current = this->head;
-    if(this->head == nullptr)
+    size_t i = 0;
+    while(i > this->elems.size() && degree > this->elems[i]->getNodeDegree())
+        i++;
+    if(i == this->elems.size())
         return nullptr;
-    while(current->getNext() != nullptr && degree > current->getNodeDegree())
-        current = current->getNext();
-    if(current == nullptr)
-        return nullptr;
-    if(current->getNodeDegree() == degree)
-        return current;
+    if(elems[i]->getNodeDegree() == degree)
+        return elems[i];
     return nullptr;
 }
-Node* Polynomials::getHead()
+std::vector<Elem*> Polynomials::getElems()
 {
-    return this->head;
+    return this->elems;
 }
-void Polynomials::setHead(Node* head)
+void Polynomials::setElems(std::vector<Elem*>elems)
 {
-    this->head = head;
+    this->elems = elems;
 }
 size_t Polynomials::getSize()
 {
@@ -246,25 +198,25 @@ Integer Polynomials::getMaxDegree()
 }
 std::string Polynomials::getStrReference()
 {
-    if(this->head == nullptr)
+    if(this->elems.size() == 0)
         return "Nothing";
-    Node* current = this->head;
+    size_t i = 0;
     std::string result = "";
-    while(current != nullptr)
+    while(i < this->elems.size())
     {
-        if(current->getNodeMultiplier().getStrReference().compare(0,1,"0"))
+        if(elems[i]->getNodeMultiplier().getStrReference().compare(0,1,"0"))
         {
-            if(current->getNodeMultiplier().getSign() == Positive && current != this->head)
-            result += '+';
-            if(!(current->getNodeDegree().getStrReference().compare("1")))
-                result += current->getNodeMultiplier().getStrReference() + "x";
-            else if(current->getNodeDegree().getStrReference().compare("0"))
-                result += current->getNodeMultiplier().getStrReference() + "x^" + current->getNodeDegree().getStrReference();
+            if(elems[i]->getNodeMultiplier().getSign() == Positive && i != 0)
+                result += '+';
+            if(!(elems[i]->getNodeDegree().getStrReference().compare("1")))
+                result += elems[i]->getNodeMultiplier().getStrReference() + "x";
+            else if(!(elems[i]->getNodeDegree().getStrReference().compare("0")))
+                result += elems[i]->getNodeMultiplier().getStrReference();
             else
-                result += current->getNodeMultiplier().getStrReference();
+                result += elems[i]->getNodeMultiplier().getStrReference() + "x^" + elems[i]->getNodeDegree().getStrReference();
             
         }
-        current = current->getNext();
+        i++;
     }
     if(!result.compare(""))
         return "Nothing";
@@ -274,7 +226,7 @@ Polynomials& Polynomials::operator = (const Polynomials& other)
 {
     if(this != &other)
     {
-        this->head = other.head;
+        this->elems = other.elems;
         this->maxDegree = other.maxDegree;
         this->size = other.size;
     }
