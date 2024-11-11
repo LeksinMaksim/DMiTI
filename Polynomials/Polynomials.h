@@ -10,6 +10,7 @@ class Node
 {
     public:
         Node(Rationals multiplier, Integer degree);
+        Node(Node& other);
         Rationals getNodeMultiplier();
         Integer getNodeDegree();
         Node* getNext();
@@ -18,6 +19,7 @@ class Node
         void setNodeDegree(Integer degree);
         void setNext(Node* next);
         void setPrev(Node* prev);
+        Node& operator=(const Node& other);
     private:
         Rationals multiplier;
         Integer degree;
@@ -29,6 +31,8 @@ class Polynomials
 {
     public:
         Polynomials();
+        Polynomials(std::string input);
+        Polynomials(Polynomials& other);
         void insertElem(Rationals multiplier, Integer degree);
         void popElem(Integer degree);
         Node* getElem(Integer degree);
@@ -37,6 +41,7 @@ class Polynomials
         size_t getSize();
         Integer getMaxDegree();
         std::string getStrReference();
+        Polynomials& operator=(const Polynomials& other);
     private:
         Node* head;
         size_t size;

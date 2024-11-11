@@ -9,6 +9,13 @@ Node::Node(Rationals multiplier, Integer degree)
     this->next = nullptr;
     this->prev = nullptr;
 }
+Node::Node(Node& other)
+{
+    this->multiplier = other.multiplier;
+    this->degree = other.degree;
+    this->next = other.next;
+    this->prev = other.prev;
+}
 Rationals Node::getNodeMultiplier()
 {
     return this->multiplier;
@@ -41,6 +48,17 @@ void Node::setPrev(Node* prev)
 {
     this->prev = prev;
 }
+Node& Node::operator=(const Node& other)
+{
+    if(this != &other)
+    {
+        this->degree = other.degree;
+        this->multiplier = other.multiplier;
+        this->next = other.next;
+        this->prev = other.prev;
+    }
+    return *this;
+}
 
 //Node end
 
@@ -51,6 +69,89 @@ Polynomials::Polynomials()
     this->head = nullptr;
     this->size = 0;
     this->maxDegree = Integer(-10000);
+}
+Polynomials::Polynomials(std::string input)
+{
+    this->head = nullptr;
+    this->size = 0;
+    this->maxDegree = Integer(0);
+    Rationals multiplier = Rationals();
+    Integer degree = Integer();
+
+    Integer numinator = Integer();
+    NaturalNumbers denominator = NaturalNumbers();
+    size_t cnt = 0;
+    int start = -1;
+    bool flag = false;
+    for(size_t i = 0; i < input.size(); i++)
+    {
+        if((input[i] >= '0' && input[i] <= '9') || (i == 0 && i == '-'))
+        {
+            if(start == -1)
+                start = i;
+            cnt++;
+        }
+        else if(input[i] == '/')
+        {
+            if(start == -1)
+            {
+                std::cout<<"Input Error!"<<std::endl;
+                return;
+            }
+            numinator = {input.substr(start, cnt)};
+            cnt = 0;
+            start = -1;
+            flag = true;
+        }
+        else if(input[i] == 'x')
+        {
+            if(flag && start != - 1)
+            {
+                denominator = {input.substr(start, cnt)};
+                multiplier = {numinator, denominator};
+            }
+            else
+            {
+                numinator = {input.substr(start, cnt)};
+                multiplier = Rationals(numinator);
+            }
+            flag = false;
+            cnt = 0;
+            start = -1;
+        }
+        else if(input[i] == '+' || input[i] == '-')
+        {
+            if(input[i] != '-')
+            {
+                if(start == -1)
+                    degree = Integer(1);
+                else
+                    degree = {input.substr(start, cnt)};
+                this->insertElem(multiplier, degree);
+            }
+            if(input[i] == '-')
+            {
+                start = i;
+                cnt = 1;
+            }
+            else
+            {
+                start = -1;
+                cnt = 0;
+            }
+        }
+        if(i == input.size() - 1)
+        {
+            degree = {input.substr(start, cnt)};
+            this->insertElem(multiplier, degree);
+        }
+    }
+}
+Polynomials::Polynomials(Polynomials& other)
+{
+    this->head = other.head;
+    this->maxDegree = other.maxDegree;
+    this->size = other.size;
 }
 void Polynomials::insertElem(Rationals multiplier, Integer degree)
 {
@@ -155,7 +256,9 @@ std::string Polynomials::getStrReference()
         {
             if(current->getNodeMultiplier().getSign() == Positive && current != this->head)
             result += '+';
-            if(current->getNodeDegree().getStrReference().compare("0"))
+            if(!(current->getNodeDegree().getStrReference().compare("1")))
+                result += current->getNodeMultiplier().getStrReference() + "x";
+            else if(current->getNodeDegree().getStrReference().compare("0"))
                 result += current->getNodeMultiplier().getStrReference() + "x^" + current->getNodeDegree().getStrReference();
             else
                 result += current->getNodeMultiplier().getStrReference();
@@ -166,5 +269,15 @@ std::string Polynomials::getStrReference()
     if(!result.compare(""))
         return "Nothing";
     return result;
+}
+Polynomials& Polynomials::operator = (const Polynomials& other)
+{
+    if(this != &other)
+    {
+        this->head = other.head;
+        this->maxDegree = other.maxDegree;
+        this->size = other.size;
+    }
+    return *this;
 }
 // Linked List end

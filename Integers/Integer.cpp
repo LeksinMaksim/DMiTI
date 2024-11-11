@@ -83,6 +83,20 @@ Integer& Integer::operator=(const Integer& number){
 	}
 	return *this;
 }
+
+Integer::Integer(std::string input)
+{
+	this->size = input.size();
+	if(input[0] == '-')
+	{
+		this->sign = Negative;
+		input = input.substr(1, input.size() - 1);
+	}
+	else
+		this->sign = Positive;
+	for(const char i: input)
+		this->digits.push_back(i - '0');
+}
 bool Integer::operator > (const Integer& other)
 {
 	if(this->sign == Positive && other.sign == Negative)

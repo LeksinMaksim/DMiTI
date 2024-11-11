@@ -16,6 +16,7 @@ class Integer{
 		Integer();
 		Integer(int number);
 		Integer(const Integer& otherNumber);
+		Integer(std::string input);
 		SignStatus getSign();
 		size_t getSize();
 		void setSize(size_t newSize);
