@@ -12,34 +12,34 @@ NaturalNumbers SUB_NN_N(NaturalNumbers firstNumber, NaturalNumbers secondNumber)
 	int sub = 0;
 	std::vector<size_t>  a = firstNumber.getDigits();
 	std::vector<size_t> b = secondNumber.getDigits();
-	std::vector<size_t> res_digits;
-    int diff_sizes = firstNumber.getSize()-secondNumber.getSize();
+	std::vector<size_t> resDigits;
+    int diffSizes = firstNumber.getSize()-secondNumber.getSize();
 
 	for (int i = secondNumber.getSize()-1; i>=0; i--){
-		temp = a[i+diff_sizes] - b[i] + sub;
+		temp = a[i+diffSizes] - b[i] + sub;
 		if (temp < 0){
-			res_digits.insert(res_digits.begin(), temp + 10);
+			resDigits.insert(resDigits.begin(), temp + 10);
 			sub = -1;
 		}
 		else{
-			res_digits.insert(res_digits.begin(), temp);
+			resDigits.insert(resDigits.begin(), temp);
 			sub = 0;
 		}
 	}
-	for (int i = diff_sizes-1; i>=0; i--){
+	for (int i = diffSizes-1; i>=0; i--){
 		temp = a[i] + sub;
 		if (temp < 0) {
-			res_digits.insert(res_digits.begin(), temp + 10);
+			resDigits.insert(resDigits.begin(), temp + 10);
 			sub = -1;
 		}
 		else {
-			res_digits.insert(res_digits.begin(), temp);
+			resDigits.insert(resDigits.begin(), temp);
 			sub = 0;
 		}
 	}
-    while (res_digits.size()>1 && res_digits[0]==0){
-        res_digits.erase(res_digits.begin());
+    while (resDigits.size() >1 && resDigits[0] == 0){
+        resDigits.erase(resDigits.begin());
     }
-    result.setDigits(res_digits);
+    result.setDigits(resDigits);
 	return result;
 }
