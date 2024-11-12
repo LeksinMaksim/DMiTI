@@ -13,6 +13,7 @@ class NaturalNumbers{
 		NaturalNumbers();
 		NaturalNumbers(size_t number);
 		NaturalNumbers(const NaturalNumbers& otherNumber);
+		NaturalNumbers(std::string input);
 		std::vector<size_t> getDigits();
 		size_t getSize();
 		void setSize(size_t newSize);

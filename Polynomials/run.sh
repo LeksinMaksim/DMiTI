@@ -1,0 +1,1 @@
+g++ test.cpp ../Rationals/Rationals.cpp ../Integers/Integer.cpp ../NaturalNumbers/NaturalNumbers.cpp Polynomials.cpp LED_P_Q.cpp && ./a.out
