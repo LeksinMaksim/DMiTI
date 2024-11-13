@@ -16,7 +16,6 @@ class Integer{
 		Integer();
 		Integer(int number);
 		Integer(const Integer& otherNumber);
-		Integer(std::string input);
 		SignStatus getSign();
 		size_t getSize();
 		void setSize(size_t newSize);
@@ -27,6 +26,8 @@ class Integer{
 		void setDigits(std::vector<size_t> newDigits);
 		void setSign(SignStatus newSign);
 		Integer& operator=(const Integer& number);
+		
+		Integer(std::string input);
 		bool operator > (const Integer& other);
 		bool operator == (const Integer& other);
 };

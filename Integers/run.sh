@@ -1,0 +1,1 @@
+g++ g++ test.cpp ../Integers/Integer.cpp ../NaturalNumbers/NaturalNumbers.cpp TRANS_Z_N.cpp && ./a.out
