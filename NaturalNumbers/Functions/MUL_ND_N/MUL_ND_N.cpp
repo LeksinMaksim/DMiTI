@@ -12,10 +12,10 @@ NaturalNumbers MUL_ND_N(NaturalNumbers number, size_t digit){
 	for (int i = oldDigits.size() - 1; i >= 0; i--){
 		tmpResult = oldDigits[i] * digit;
 		newDigits.at(indexNewNumber) += tmpResult % 10;
-		if (tmpResult >= 10){
+		if (tmpResult >= 10 && indexNewNumber >= 1){
 			newDigits.at(indexNewNumber - 1) += tmpResult / 10; 
 		}
-		if (newDigits.at(indexNewNumber) >= 10){
+		if (newDigits.at(indexNewNumber) >= 10 && indexNewNumber >= 1){
 			newDigits.at(indexNewNumber - 1) += newDigits.at(indexNewNumber) / 10;
 			newDigits.at(indexNewNumber) %= 10;
 		}
