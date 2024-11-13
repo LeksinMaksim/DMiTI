@@ -2,9 +2,9 @@
 #define SIGN_STATUS_HEADER
 
 enum SignStatus{
+    NullStatus,
     Negative,
-    Positive,
-    NullStatus
+    Positive
 };
 
 #endif
