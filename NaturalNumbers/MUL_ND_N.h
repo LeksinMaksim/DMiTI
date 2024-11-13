@@ -4,6 +4,6 @@
 #include "NaturalNumbers.h"
 #include <iostream>
 
-NaturalNumbers multNaturalNumberToDigit(NaturalNumbers nNumber, size_t digit);
+NaturalNumbers MUL_ND_N(NaturalNumbers nNumber, size_t digit);
 
 #endif

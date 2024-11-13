@@ -3,7 +3,7 @@
 #include <iostream>
 NaturalNumbers SUB_NN_N(NaturalNumbers firstNumber, NaturalNumbers secondNumber){ 
     NaturalNumbers result;
-    if (compareNaturalNaturalNumbers(firstNumber, secondNumber) == 1){
+    if (COM_NN_D(firstNumber, secondNumber) == 1){
         NaturalNumbers buffer;
         buffer = firstNumber;
         firstNumber = secondNumber;

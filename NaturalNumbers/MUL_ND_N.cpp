@@ -1,6 +1,6 @@
 #include "MUL_ND_N.h"
 
-NaturalNumbers multNaturalNumberToDigit(NaturalNumbers nNumber, size_t digit){
+NaturalNumbers MUL_ND_N(NaturalNumbers nNumber, size_t digit){
 	if (digit == 1) return nNumber;
 	if (digit == 0) return NaturalNumbers(0);
 	NaturalNumbers newNumber = NaturalNumbers(0);

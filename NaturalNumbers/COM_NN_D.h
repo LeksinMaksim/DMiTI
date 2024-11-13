@@ -3,6 +3,6 @@
 
 #include "NaturalNumbers.h"
 
-size_t compareNaturalNaturalNumbers(NaturalNumbers firstNumber, NaturalNumbers secondNumber);
+short COM_NN_D(NaturalNumbers firstNumber, NaturalNumbers secondNumber);
 
 #endif

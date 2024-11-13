@@ -1,6 +1,5 @@
 #include "COM_NN_D.h"
-
-size_t compareNaturalNaturalNumbers(NaturalNumbers firstNumber, NaturalNumbers secondNumber){
+short COM_NN_D(NaturalNumbers firstNumber, NaturalNumbers secondNumber){
 	int resultOfCompare = firstNumber.getSize() - secondNumber.getSize();
 	if (resultOfCompare == 0){
 		for (size_t i = 0; i < firstNumber.getSize(); i++){
