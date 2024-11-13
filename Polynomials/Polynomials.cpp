@@ -187,6 +187,7 @@ std::vector<Elem*> Polynomials::getElems()
 void Polynomials::setElems(std::vector<Elem*>elems)
 {
     this->elems = elems;
+    this->size = elems.size();
 }
 size_t Polynomials::getSize()
 {
