@@ -12,7 +12,7 @@ int main()
 {
     NaturalNumbers a = {"12345678901234567890"};
     NaturalNumbers b = {"10000"};
-    NaturalNumbers c = {"100"};
+    NaturalNumbers c = {"531"};
 
     std::cout<<"COM_NN_D: "<<COM_NN_D(a, b)<<std::endl;
     std::cout<<"ADD_NN_N: "<<ADD_NN_N(a, b).getStrReference()<<std::endl;
@@ -22,5 +22,5 @@ int main()
     std::cout<<"MUL_NN_N: "<<MUL_NN_N(a, c).getStrReference()<<std::endl;
     std::cout<<"SUB_NDN_N: "<<SUB_NDN_N(a, b, 3).getStrReference()<<std::endl;
     std::cout<<"DIV_NN_Dk: "<<DIV_NN_Dk(a, b, 5)<<std::endl;
-    std::cout<<"DIV_NN_N: "<<DIV_NN_N(b, c).getStrReference()<<std::endl;
+    std::cout<<"DIV_NN_N: "<<DIV_NN_N(a, c).getStrReference()<<std::endl;
 }
