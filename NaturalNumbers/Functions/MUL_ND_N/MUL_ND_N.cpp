@@ -1,10 +1,10 @@
 #include "MUL_ND_N.h"
 
-NaturalNumbers multNaturalNumberToDigit(NaturalNumbers nNumber, size_t digit){
-	if (digit == 1) return nNumber;
+NaturalNumbers MUL_ND_N(NaturalNumbers number, size_t digit){
+	if (digit == 1) return number;
 	if (digit == 0) return NaturalNumbers(0);
 	NaturalNumbers newNumber = NaturalNumbers(0);
-	std::vector<size_t> oldDigits = nNumber.getDigits();
+	std::vector<size_t> oldDigits = number.getDigits();
 	std::vector<size_t> newDigits;
 	newDigits.resize(oldDigits.size() + (digit*oldDigits.at(0) >= 10 ? 1 : 0));
 	size_t indexNewNumber = newDigits.size() - 1;
