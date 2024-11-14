@@ -2,6 +2,8 @@
 #include "COM_NN_D.h"
 #include <algorithm>
 
+// Выполнил Пьянков Михаил 3384
+
 NaturalNumbers ADD_NN_N(NaturalNumbers firstNumber, NaturalNumbers secondNumber)
 {
     if(COM_NN_D(firstNumber, secondNumber) == 1)

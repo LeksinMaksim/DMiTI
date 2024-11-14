@@ -76,7 +76,7 @@ Polynomials::Polynomials(std::string input)
                 std::cout<<"Input Error!"<<std::endl;
                 return;
             }
-            numinator = {input.substr(start, cnt)};
+            numinator = Integer(input.substr(start, cnt));
             cnt = 0;
             start = -1;
             flag = true;
@@ -85,12 +85,12 @@ Polynomials::Polynomials(std::string input)
         {
             if(flag && start != - 1)
             {
-                denominator = {input.substr(start, cnt)};
-                multiplier = {numinator, denominator};
+                denominator = NaturalNumbers(input.substr(start, cnt));
+                multiplier = Rationals(numinator, denominator);
             }
             else
             {
-                numinator = {input.substr(start, cnt)};
+                numinator = Integer(input.substr(start, cnt));
                 multiplier = Rationals(numinator);
             }
             flag = false;
@@ -104,7 +104,7 @@ Polynomials::Polynomials(std::string input)
                 if(start == -1)
                     degree = Integer(1);
                 else
-                    degree = {input.substr(start, cnt)};
+                    degree = Integer(input.substr(start, cnt));
                 this->insertElem(multiplier, degree);
             }
             if(input[i] == '-')
@@ -120,7 +120,7 @@ Polynomials::Polynomials(std::string input)
         }
         if(i == input.size() - 1)
         {
-            degree = {input.substr(start, cnt)};
+            degree = Integer(input.substr(start, cnt));
             this->insertElem(multiplier, degree);
         }
     }
