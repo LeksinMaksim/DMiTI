@@ -6,4 +6,10 @@ int main()
     Rationals x = LED_P_Q(a);
     std::cout<<a.getStrReference()<<std::endl;
     std::cout<<x.getStrReference()<<std::endl;
+
+    Polynomials b = Polynomials(a);
+    std::vector<Elem*>data = b.getElems();
+    data[0]->setNodeDegree(Integer(1000));
+    std::cout<<b.getStrReference()<<std::endl;
+    std::cout<<a.getStrReference()<<std::endl;
 }
