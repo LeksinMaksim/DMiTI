@@ -127,7 +127,13 @@ Polynomials::Polynomials(std::string input)
 }
 Polynomials::Polynomials(Polynomials& other)
 {
-    this->elems = other.elems;
+    std::vector<Elem*>elemsCopy;
+    for(size_t i = 0; i < other.elems.size(); i++)
+    {
+        Elem* newElem = new Elem(*other.elems[i]);
+        elemsCopy.push_back(newElem);
+    }
+    this->elems = elemsCopy;
     this->maxDegree = other.maxDegree;
     this->size = other.size;
 }
@@ -188,6 +194,7 @@ void Polynomials::setElems(std::vector<Elem*>elems)
 {
     this->elems = elems;
     this->size = elems.size();
+    this->maxDegree = elems.back()->getNodeDegree();
 }
 size_t Polynomials::getSize()
 {
@@ -227,7 +234,13 @@ Polynomials& Polynomials::operator = (const Polynomials& other)
 {
     if(this != &other)
     {
-        this->elems = other.elems;
+        std::vector<Elem*>elemsCopy;
+        for(size_t i = 0; i < other.elems.size(); i++)
+        {
+            Elem* newElem = new Elem(*other.elems[i]);
+            elemsCopy.push_back(newElem);
+        }
+        this->elems = elemsCopy;
         this->maxDegree = other.maxDegree;
         this->size = other.size;
     }
