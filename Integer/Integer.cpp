@@ -13,7 +13,7 @@ Integer::Integer(int number){
 		this->size = 1;
 		this->setSign(NullStatus);
 	}
-	if (this->sign == false) number = -number;
+	if (this->sign == Negative) number = -number;
 	while (number > 0){
 		this->digits.insert(this->digits.begin(), number % 10);
 		number /= 10;
