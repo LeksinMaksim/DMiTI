@@ -1,6 +1,7 @@
 #include "ABS_Z_N.h"
 
-Integer ABS_Z_N(Integer number){
-	number.setSign(Positive);
-	return number;
+NaturalNumbers ABS_Z_N(Integer number){
+	NaturalNumbers result;
+	result.setDigits(number.getDigits());
+	return result;
 }

@@ -5,8 +5,8 @@ Integer MUL_ZZ_Z(Integer firstNumber, Integer secondNumber){
         return Integer(0);
     }
 
-    Integer absNumberFirst = ABS_Z_N(firstNumber);
-    Integer absNumberSecond = ABS_Z_N(secondNumber);
+    Integer absNumberFirst = TRANS_N_Z(ABS_Z_N(firstNumber));
+    Integer absNumberSecond = TRANS_N_Z(ABS_Z_N(secondNumber));
 
     NaturalNumbers firstNumberNaturalForm;
     firstNumberNaturalForm = TRANS_Z_N(absNumberFirst);

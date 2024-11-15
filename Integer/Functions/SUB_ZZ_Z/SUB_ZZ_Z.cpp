@@ -13,8 +13,8 @@ Integer SUB_ZZ_Z(Integer firstNumber, Integer secondNumber) {
     size_t compareSign = COM_NN_D(firstNumberNaturalForm, secondNumberNaturalForm);
     bool isTwoPositive = firstNumberSign == 2 && secondNumberSign == 2;
     if (firstNumberSign == secondNumberSign) {
-        Integer resultInteger(compareSign == 2 && isTwoPositive || compareSign == 1 && !isTwoPositive ? 1 : -1);
-        resultNaturalForm = (compareSign == 2 && isTwoPositive || compareSign == 1 && !isTwoPositive) 
+        Integer resultInteger(((compareSign == 2 && isTwoPositive) || (compareSign == 1 && !isTwoPositive)) ? 1 : -1);
+        resultNaturalForm = (((compareSign == 2 && isTwoPositive) || (compareSign == 1 && !isTwoPositive))) 
                             ? SUB_NN_N(firstNumberNaturalForm, secondNumberNaturalForm)
                             : SUB_NN_N(secondNumberNaturalForm, firstNumberNaturalForm);
         resultInteger.setDigits(resultNaturalForm.getDigits());

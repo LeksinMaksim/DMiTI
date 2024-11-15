@@ -2,7 +2,8 @@
 #define ABS_Z_N_HEADER
 
 #include "../../Source/Integer.h"
+#include "../../../NaturalNumbers/Source/NaturalNumbers.h"
 
-Integer ABS_Z_N(Integer number);
+NaturalNumbers ABS_Z_N(Integer number);
 
 #endif

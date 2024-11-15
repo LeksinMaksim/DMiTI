@@ -27,6 +27,7 @@
 #include "../Integer/Functions/SUB_ZZ_Z/SUB_ZZ_Z.h"
 #include "../Integer/Functions/MUL_ZZ_Z/MUL_ZZ_Z.h"
 #include "../Integer/Functions/DIV_ZZ_Z/DIV_ZZ_Z.h"
+#include "../Integer/Functions/MOD_ZZ_Z/MOD_ZZ_Z.h"
 
 #include <iostream>
 #include <vector>
