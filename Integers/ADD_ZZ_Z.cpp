@@ -18,7 +18,7 @@ Integer ADD_ZZ_Z(Integer first, Integer second)
 		{
 			result.setDigits(SUB_NN_N(secondNatural, firstNatural).getDigits());
             resultNatural.setDigits(result.getDigits());
-			if (!isNotZero(resultNatural)){
+			if (!resultNatural.getStrReference().compare(0, 1, "0")){
                 result.setSign(NullStatus);
             }
 			else{

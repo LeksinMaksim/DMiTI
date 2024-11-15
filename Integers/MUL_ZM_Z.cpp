@@ -1,6 +1,6 @@
 #include "MUL_ZM_Z.h"
 
-Integer MUL_ZM_Z::multiply(const Integer& number)
+Integer MUL_ZM_Z(const Integer number)
 {
     Integer result(number);
 

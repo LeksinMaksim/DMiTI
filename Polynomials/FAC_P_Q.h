@@ -8,7 +8,8 @@
 #include "../Integers/ABS_Z_N.h"
 
 #include "Polynomials.h"
+#include <iostream>
 
-Polynomials FAC_P_Q(Polynomials polinom);
+std::pair<Rationals, Polynomials> FAC_P_Q(Polynomials polinom);
 
 #endif //__FAC_P_Q__

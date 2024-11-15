@@ -5,7 +5,7 @@
 // Возьмём НОД(a_1, a_2, ... , a_n) = A и НОД(b_1, b_2, ... , b_n) = B
 // Если A и B не равны 1, то имеет смысл разделить множитель каждого монома многочлена на дробь A/B
 // Или числитель разделить на A, а знаменатель разделить на B
-Polynomials FAC_P_Q(Polynomials polinom)
+std::pair<Rationals, Polynomials> FAC_P_Q(Polynomials polinom)
 {
     std::vector<Elem*>elems = polinom.getElems(); // Получаем мономы полинома
     NaturalNumbers gcfNuminator = NaturalNumbers(TRANS_Z_N(ABS_Z_N(elems[0]->getNodeMultiplier().getNumerator()))); // Инициализируем НОД числителей
@@ -15,7 +15,7 @@ Polynomials FAC_P_Q(Polynomials polinom)
         gcfNuminator = GCF_NN_N(gcfNuminator, TRANS_Z_N(ABS_Z_N(elems[i]->getNodeMultiplier().getNumerator()))); // Обновляем НОД числителя
         gcfDenuminator = GCF_NN_N(gcfDenuminator, elems[i]->getNodeMultiplier().getDenominator()); // Обновляем НОД знаменателя
         if(!gcfNuminator.getStrReference().compare(0, 1, "1") && !gcfDenuminator.getStrReference().compare(0, 1, "1")) // Проверяем что оба НОД не равны 1
-            return polinom; // Если это так, то можно прекратить работу программы, потому что нельзя вынести общий множитель у всех мономов
+            return {Rationals(Integer("1"), NaturalNumbers("1")), polinom}; // Если это так, то можно прекратить работу программы, потому что нельзя вынести общий множитель у всех мономов
     }
     Integer gcfNum = TRANS_N_Z(gcfNuminator);
     Integer gcfDenum = TRANS_N_Z(gcfDenuminator);
@@ -29,5 +29,5 @@ Polynomials FAC_P_Q(Polynomials polinom)
         elems[i]->setNodeMultiplie(newMultiplier); // Присваиваем его моному
     }
     polinom.setElems(elems); // Присваиваем полиному новые мономы
-    return polinom;
+    return {Rationals(gcfNum, TRANS_Z_N(gcfDenum)), polinom};
 }

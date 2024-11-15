@@ -3,11 +3,6 @@
 
 #include "Integer.h"
 
-class MUL_ZM_Z
-{
-public:
-    // Умножение целого на (-1)
-    static Integer multiply(const Integer& number);
-};
+Integer MUL_ZM_Z(Integer number);
 
 #endif

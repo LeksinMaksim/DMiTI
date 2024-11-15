@@ -18,6 +18,7 @@ Polynomials SUB_PP_P(Polynomials first, Polynomials second)
     // и добавляем его в новый вектор
     // Если степень очередного монома первого полинома больше степени очередного мнонома второго полинома, то
     // создаём новый моном из монома второго полинома, но с заменой знака и добавляем его в новый вектор
+    std::cout<<"end0"<<std::endl;
     while (i < firstElems.size() && j < secondElems.size())
     {
         if(firstElems[i]->getNodeDegree() > secondElems[j]->getNodeDegree())
@@ -33,9 +34,14 @@ Polynomials SUB_PP_P(Polynomials first, Polynomials second)
         }
         else if(firstElems[i]->getNodeDegree() == secondElems[j]->getNodeDegree())
         {
-            Rationals multiplier = SUB_QQ_Q(firstElems[i]->getNodeMultiplier(), secondElems[j]->getNodeMultiplier()); // Разность коэффициентов
-            Elem* newElem = new Elem(multiplier, firstElems[i]->getNodeDegree()); // Создание нового монома
-            resultElems.push_back(newElem); // Добавление нового монома
+            // Проверка на 0 для вычитания одинаковых дробей
+            if((firstElems[i]->getNodeMultiplier().getDenominator().getStrReference().compare(secondElems[j]->getNodeMultiplier().getDenominator().getStrReference())) || \
+            (firstElems[i]->getNodeMultiplier().getNumerator().getStrReference().compare(secondElems[j]->getNodeMultiplier().getNumerator().getStrReference())))
+            {
+                Rationals multiplier = SUB_QQ_Q(firstElems[i]->getNodeMultiplier(), secondElems[j]->getNodeMultiplier()); // Разность коэффициентов
+                Elem* newElem = new Elem(multiplier, firstElems[i]->getNodeDegree()); // Создание нового монома
+                resultElems.push_back(newElem); // Добавление нового монома
+            }
             i++;
             j++;
         }
