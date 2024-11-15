@@ -41,7 +41,7 @@ Polynomials SUB_PP_P(Polynomials first, Polynomials second)
         }
         else
         {
-            Elem* newElem = new Elem(firstElems[i]); // Создание нового монома
+            Elem* newElem = new Elem(firstElems[i]->getNodeMultiplier(), firstElems[i]->getNodeDegree()); // Создание нового монома
             resultElems.push_back(newElem); // Добавление нового монома
             i++;
         }
@@ -51,7 +51,7 @@ Polynomials SUB_PP_P(Polynomials first, Polynomials second)
     // То же самое делаем со первым полиномом, только не меняем знак и мономов
     while(i < firstElems.size())
     {
-        Elem* newElem = new Elem(firstElems[i]); // Создание нового монома
+        Elem* newElem = new Elem(firstElems[i]->getNodeMultiplier(), firstElems[i]->getNodeDegree()); // Создание нового монома
         resultElems.push_back(newElem); // Добавление нового монома
         i++;
     }

@@ -5,6 +5,7 @@
 #include "../Integers/MUL_ZZ_Z.h"
 #include "../Integers/ADD_ZZ_Z.h"
 #include "../Integers/TRANS_N_Z.h"
+#include "../Integers/DIV_ZZ_Z.h"
 #include "Rationals.h"
 
 Rationals ADD_QQ_Q(Rationals first, Rationals second);

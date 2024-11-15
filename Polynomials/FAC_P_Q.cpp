@@ -17,14 +17,14 @@ Polynomials FAC_P_Q(Polynomials polinom)
         if(!gcfNuminator.getStrReference().compare(0, 1, "1") && !gcfDenuminator.getStrReference().compare(0, 1, "1")) // Проверяем что оба НОД не равны 1
             return polinom; // Если это так, то можно прекратить работу программы, потому что нельзя вынести общий множитель у всех мономов
     }
-    Integer gcfNuminator = TRANS_N_Z(gcfNuminator);
-    Integer gcfDenuminator = TRANS_N_Z(gcfDenuminator);
+    Integer gcfNum = TRANS_N_Z(gcfNuminator);
+    Integer gcfDenum = TRANS_N_Z(gcfDenuminator);
     for(size_t i = 0; i < elems.size(); i++)
     {
         Integer numinator = elems[i]->getNodeMultiplier().getNumerator();
         Integer denuminator = TRANS_N_Z(elems[i]->getNodeMultiplier().getDenominator());
-        numinator = DIV_ZZ_Z(numinator, gcfNuminator); // Производим деление числителя на НОД числителей
-        denuminator = DIV_ZZ_Z(denuminator, gcfDenuminator); // Производим деление знаменателя на НОД знаменателей
+        numinator = DIV_ZZ_Z(numinator, gcfNum); // Производим деление числителя на НОД числителей
+        denuminator = DIV_ZZ_Z(denuminator, gcfDenum); // Производим деление знаменателя на НОД знаменателей
         Rationals newMultiplier = Rationals(numinator, TRANS_Z_N(denuminator)); // Создаём новый множитель монома
         elems[i]->setNodeMultiplie(newMultiplier); // Присваиваем его моному
     }

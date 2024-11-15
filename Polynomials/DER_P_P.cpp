@@ -11,7 +11,7 @@ Polynomials DER_P_P(Polynomials polinom)
         Integer numinator = elems[i]->getNodeMultiplier().getNumerator();
         Integer degree = elems[i]->getNodeDegree();
         numinator = MUL_ZZ_Z(numinator, degree); // считаем новый числитель нового коэффициента 
-        Rationals multiplier = {numinator, elems[i]->getNodeMultiplier().getDenominator}; // считаем новый коэффициент
+        Rationals multiplier = {numinator, elems[i]->getNodeMultiplier().getDenominator()}; // считаем новый коэффициент
         degree = SUB_ZZ_Z(degree, Integer("1")); // считаем новую степень
         elems[i]->setNodeDegree(degree); // переопределяем степень
         elems[i]->setNodeMultiplie(multiplier); // переопределяем коэффициент
