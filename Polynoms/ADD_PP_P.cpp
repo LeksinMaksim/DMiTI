@@ -1,5 +1,5 @@
 #include "ADD_PP_P.h"
-
+//Функция, проверяющая, что в векторе целых чисел есть заданное число
 bool isinstance(Integer elem, std::vector<Integer> vec){
     for(Integer el:vec){
         if(el==elem){
