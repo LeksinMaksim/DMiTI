@@ -25,5 +25,8 @@ NaturalNumbers DIV_NN_N(NaturalNumbers firstNumber, NaturalNumbers secondNumber)
 		resultDiv = ADD_NN_N(resultDiv, resultMulNkN);
 		firstNumber = SUB_NN_N(firstNumber, subtrahend);
 	}
+	if (COM_NN_D(firstNumber, secondNumber) == 0){
+	    resultDiv = ADD_NN_N(resultDiv, 1);
+	}
 	return resultDiv;
 }
