@@ -207,7 +207,7 @@ Integer Polynomials::getMaxDegree()
 std::string Polynomials::getStrReference()
 {
     if(this->elems.size() == 0)
-        return "Nothing";
+        return "0";
     size_t i = 0;
     std::string result = "";
     while(i < this->elems.size())
@@ -227,7 +227,7 @@ std::string Polynomials::getStrReference()
         i++;
     }
     if(!result.compare(""))
-        return "Nothing";
+        return "0";
     return result;
 }
 Polynomials& Polynomials::operator = (const Polynomials& other)

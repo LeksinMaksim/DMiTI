@@ -105,24 +105,30 @@ bool Integer::operator > (const Integer& other)
 		return false;
 	else if(this->sign == Positive && this->size > other.size)
 		return true;
+	else if(this->sign == Positive && this->size < other.size)
+		return false;
 	else if(this->sign == Negative && this->size > other.size)
 		return false;
+	else if(this->sign == Negative && this->size < other.size)
+		return true;
 	else
 	{
 		std::vector<size_t>first = this->digits;
 		std::vector<size_t>second = other.digits;
-		std::reverse(first.begin(), first.end());
-		std::reverse(second.begin(), second.end());
+		//std::reverse(first.begin(), first.end());
+		//std::reverse(second.begin(), second.end());
 		if(this->sign == Positive)
 		{
 			size_t equal = 0;
 			size_t i = 0;
 			while(i < this->size)
 			{
-				if(first[i] < second[i])
-					return false;
+				if(first[i] > second[i])
+					return true;
 				if(first[i] == second[i])
 					equal++;
+				else
+					return false;
 				i++;
 			}
 			if(equal == i)
@@ -135,10 +141,12 @@ bool Integer::operator > (const Integer& other)
 			size_t i = 0;
 			while(i < this->size)
 			{
-				if(first[i] > second[i])
-					return false;
+				if(first[i] < second[i])
+					return true;
 				if(first[i] == second[i])
 					equal++;
+				else
+					return false;
 				i++;
 			}
 			if(equal == i)
