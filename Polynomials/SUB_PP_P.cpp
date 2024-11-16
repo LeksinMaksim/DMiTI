@@ -18,7 +18,6 @@ Polynomials SUB_PP_P(Polynomials first, Polynomials second)
     // и добавляем его в новый вектор
     // Если степень очередного монома первого полинома больше степени очередного мнонома второго полинома, то
     // создаём новый моном из монома второго полинома, но с заменой знака и добавляем его в новый вектор
-    std::cout<<"end0"<<std::endl;
     while (i < firstElems.size() && j < secondElems.size())
     {
         if(firstElems[i]->getNodeDegree() > secondElems[j]->getNodeDegree())
@@ -70,6 +69,11 @@ Polynomials SUB_PP_P(Polynomials first, Polynomials second)
         j++;
     }
     Polynomials resultPolinom = Polynomials(); // Создаём новый полином
-    resultPolinom.setElems(resultElems); // Инициализируем его вектор мономов
+    if(resultElems.size() != 0)
+        resultPolinom.setElems(resultElems); // Инициализируем его вектор мономов
+    else
+    {
+        resultPolinom.insertElem(Rationals(0), Integer(1));
+    }
     return resultPolinom;
 }

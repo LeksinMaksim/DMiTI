@@ -11,5 +11,10 @@
 #include "Polynomials/LED_P_Q.h"
 #include "Polynomials/DER_P_P.h"
 #include "Polynomials/FAC_P_Q.h"
+#include "Polynomials/DIV_PP_P.h"
+#include "Polynomials/MUL_PQ_P.h"
+#include "Polynomials/MUL_Pxk_P.h"
+#include "Integers/SUB_ZZ_Z.h"
+#include "Rationals/DIV_QQ_Q.h"
 
 #endif //__all_my_funcs__
