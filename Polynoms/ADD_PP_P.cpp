@@ -1,5 +1,5 @@
 #include "ADD_PP_P.h"
-//Функция, проверяющая, что в векторе целых чисел есть заданное число
+
 bool isinstance(Integer elem, std::vector<Integer> vec){
     for(Integer el:vec){
         if(el==elem){
@@ -16,7 +16,6 @@ Polynomials ADD_PP_P(Polynomials poly1, Polynomials poly2) {
 
 
     size_t i = 0, j = 0;
-    int flag=0;
 
     // Основной цикл сложения
     for(auto el: poly1.getElems()){
@@ -31,8 +30,6 @@ Polynomials ADD_PP_P(Polynomials poly1, Polynomials poly2) {
         }
     }
 
-    i=0;
-
     while (i < poly2.getElems().size()) {
         if(!isinstance(poly2.getElems()[i]->getNodeDegree(), deleted_indexes))
         {
@@ -44,9 +41,7 @@ Polynomials ADD_PP_P(Polynomials poly1, Polynomials poly2) {
         }
         i++;
     }
-    j=0;
     
-
     // Копируем оставшиеся элементы из первого многочлена
     while (j < poly1.getElems().size()) {
         if(!isinstance(poly1.getElems()[j]->getNodeDegree(), deleted_indexes))

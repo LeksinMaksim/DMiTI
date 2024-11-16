@@ -26,8 +26,10 @@ class Integer{
 		void setDigits(std::vector<size_t> newDigits);
 		void setSign(SignStatus newSign);
 		Integer& operator=(const Integer& number);
-		bool operator == (const Integer& other);
+		
+		Integer(std::string input);
 		bool operator > (const Integer& other);
+		bool operator == (const Integer& other);
 };
 
 #endif

@@ -1,8 +1,10 @@
 #ifndef ADD_NN_N_HEADER
 #define ADD_NN_N_HEADER
 
-#include "NaturalNumbers.h"
+#include "Source/NaturalNumbers.h"
+#include "COM_NN_D.h"
+#include <algorithm>
 
-NaturalNumbers ADD_NN_N(NaturalNumbers first, NaturalNumbers second);
+NaturalNumbers ADD_NN_N(NaturalNumbers firstNumber, NaturalNumbers secondNumber);
 
-#endif //ADD_NN_N_HEADER
+#endif

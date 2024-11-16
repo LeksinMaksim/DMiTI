@@ -5,5 +5,5 @@
 #include "Source/Integer.h"
 #include "../NaturalNumbers/Source/NaturalNumbers.h"
 
-Integer TRANS_N_Z(NaturalNumbers& nnumber);
+Integer TRANS_N_Z(NaturalNumbers nnumber);
 #endif

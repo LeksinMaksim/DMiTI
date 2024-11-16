@@ -3,7 +3,7 @@
 
 #include "Source/Rationals.h"
 
-Integer TRANS_Q_Z(Rationals& rnumber);
+Integer TRANS_Q_Z(Rationals rnumber);
 
 
 #endif

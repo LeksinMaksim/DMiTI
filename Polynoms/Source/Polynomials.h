@@ -6,7 +6,6 @@
 #include "../../Rationals/Source/Rationals.h"
 #include "../../NaturalNumbers/Source/NaturalNumbers.h"
 
-
 class Elem
 {
     public:

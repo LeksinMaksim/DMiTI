@@ -1,9 +1,7 @@
 #include "ADD_NN_N.h"
-#include "COM_NN_D.h"
-#include <algorithm>
 
 NaturalNumbers ADD_NN_N(NaturalNumbers firstNumber, NaturalNumbers secondNumber){
-    if(compareNaturalNaturalNumbers(firstNumber, secondNumber) == 1)
+    if(COM_NN_D(firstNumber, secondNumber) == 1)
         std::swap(firstNumber, secondNumber);
 
     std::vector<size_t>first = firstNumber.getDigits();
@@ -23,7 +21,7 @@ NaturalNumbers ADD_NN_N(NaturalNumbers firstNumber, NaturalNumbers secondNumber)
     }
     if(highDigit){
         if(k == first.size())
-            first.push_back(highDigit);
+ 			first.push_back(highDigit);
         else{
             while(k < first.size() && first[k] > 8){
                 first[k] = 0;

@@ -13,7 +13,7 @@ Integer::Integer(int number){
 		this->size = 1;
 		this->setSign(NullStatus);
 	}
-	if (this->sign == SignStatus::Negative) number = -number;
+	if (this->sign == false) number = -number;
 	while (number > 0){
 		this->digits.insert(this->digits.begin(), number % 10);
 		number /= 10;
@@ -83,16 +83,19 @@ Integer& Integer::operator=(const Integer& number){
 	}
 	return *this;
 }
-bool Integer::operator == (const Integer& other)
+
+Integer::Integer(std::string input)
 {
-	if(this->sign != other.sign || this->size != other.size)
-		return false;
-	for(size_t i = 0; i < this->size; i++)
+	this->size = input.size();
+	if(input[0] == '-')
 	{
-		if(this->digits[i] != other.digits[i])
-			return false;
+		this->sign = Negative;
+		input = input.substr(1, input.size() - 1);
 	}
-	return true;
+	else
+		this->sign = Positive;
+	for(const char i: input)
+		this->digits.push_back(i - '0');
 }
 bool Integer::operator > (const Integer& other)
 {
@@ -102,24 +105,30 @@ bool Integer::operator > (const Integer& other)
 		return false;
 	else if(this->sign == Positive && this->size > other.size)
 		return true;
+	else if(this->sign == Positive && this->size < other.size)
+		return false;
 	else if(this->sign == Negative && this->size > other.size)
 		return false;
+	else if(this->sign == Negative && this->size < other.size)
+		return true;
 	else
 	{
 		std::vector<size_t>first = this->digits;
 		std::vector<size_t>second = other.digits;
-		std::reverse(first.begin(), first.end());
-		std::reverse(second.begin(), second.end());
+		//std::reverse(first.begin(), first.end());
+		//std::reverse(second.begin(), second.end());
 		if(this->sign == Positive)
 		{
 			size_t equal = 0;
 			size_t i = 0;
 			while(i < this->size)
 			{
-				if(first[i] < second[i])
-					return false;
+				if(first[i] > second[i])
+					return true;
 				if(first[i] == second[i])
 					equal++;
+				else
+					return false;
 				i++;
 			}
 			if(equal == i)
@@ -132,10 +141,12 @@ bool Integer::operator > (const Integer& other)
 			size_t i = 0;
 			while(i < this->size)
 			{
-				if(first[i] > second[i])
-					return false;
+				if(first[i] < second[i])
+					return true;
 				if(first[i] == second[i])
 					equal++;
+				else
+					return false;
 				i++;
 			}
 			if(equal == i)
@@ -144,4 +155,15 @@ bool Integer::operator > (const Integer& other)
 		}
 		return false;
 	}
+}
+bool Integer::operator == (const Integer& other)
+{
+	if(this->sign != other.sign || this->size != other.size)
+		return false;
+	for(size_t i = 0; i < this->size; i++)
+	{
+		if(this->digits[i] != other.digits[i])
+			return false;
+	}
+	return true;
 }
