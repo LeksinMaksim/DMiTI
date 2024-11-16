@@ -29,6 +29,16 @@
 #include "../Integer/Functions/DIV_ZZ_Z/DIV_ZZ_Z.h"
 #include "../Integer/Functions/MOD_ZZ_Z/MOD_ZZ_Z.h"
 
+#include "../Rationals/Source/Rationals.h"
+#include "../Rationals/Functions/RED_Q_Q/RED_Q_Q.h"
+#include "../Rationals/Functions/INT_Q_B/INT_Q_B.h"
+#include "../Rationals/Functions/TRANS_Z_Q/TRANS_Z_Q.h"
+#include "../Rationals/Functions/TRANS_Q_Z/TRANS_Q_Z.h"
+#include "../Rationals/Functions/ADD_QQ_Q/ADD_QQ_Q.h"
+#include "../Rationals/Functions/SUB_QQ_Q/SUB_QQ_Q.h"
+#include "../Rationals/Functions/MUL_QQ_Q/MUL_QQ_Q.h"
+#include "../Rationals/Functions/DIV_QQ_Q/DIV_QQ_Q.h"
+
 #include <iostream>
 #include <vector>
 
