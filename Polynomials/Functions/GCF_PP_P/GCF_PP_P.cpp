@@ -1,5 +1,13 @@
 #include "GCF_PP_P.h"
 
+Polynomials GCF_PP_P_Interactive()
+{
+    Polynomials poly1 = NumberInput::readPolynomial("Введите первый полином: ");
+    Polynomials poly2 = NumberInput::readPolynomial("Введите второй полином: ");
+    return GCF_PP_P(poly1, poly2);
+}
+
+
 // Функция для нахождения НОД двух многочленов
 Polynomials GCF_PP_P(Polynomials poly1, Polynomials poly2) {
     // Проверяем, что оба многочлена не пустые
