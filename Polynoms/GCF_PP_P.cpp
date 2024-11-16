@@ -19,23 +19,19 @@ Polynomials GCF_PP_P(Polynomials poly1, Polynomials poly2) {
         poly1 = poly2;
         poly2 = tmp;
     }
+    Integer res_deg = poly2.getMaxDegree();
     
     // Основной цикл Евклида
-    while (poly2.getSize() > 0) {
-        
+    int i = 0;
+    while (poly2.getSize() > 0 && (poly2.getMaxDegree() > res_deg || poly2.getMaxDegree() == res_deg)) {
+        std::cout<<"Ok\n";
         Polynomials remainder = MOD_PP_P(poly1, poly2); // Остаток от деления
-        
         // Обновляем многочлены
         poly1 = poly2;
         poly2 = remainder;
-
-        // Проверяем упорядоченность многочленов
-        if (poly2.getMaxDegree() > poly1.getMaxDegree()) {
-        Polynomials tmp = poly1;
-        poly1 = poly2;
-        poly2 = tmp;
+        i++;
     }
-    }
+    poly1=poly2;
 
     // Возвращаем последний ненулевой остаток как НОД
     return poly1;
