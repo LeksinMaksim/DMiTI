@@ -1,48 +1,16 @@
 #include "GCF_PP_P.h"
 
-Polynomials GCF_PP_P_Interactive()
-{
-    Polynomials poly1 = NumberInput::readPolynomial("Введите первый полином: ");
-    Polynomials poly2 = NumberInput::readPolynomial("Введите второй полином: ");
-    return GCF_PP_P(poly1, poly2);
-}
-
-
-// Функция для нахождения НОД двух многочленов
-Polynomials GCF_PP_P(Polynomials poly1, Polynomials poly2) {
-    // Проверяем, что оба многочлена не пустые
-    if (poly1.getSize() == 0 && poly2.getSize() == 0) {
-        throw std::invalid_argument("GCF of two zero polynomials is undefined.");
-    }
-
-    // Если один из многочленов нулевой, возвращаем другой
-    if (poly1.getSize() == 0) return poly2;
-    if (poly2.getSize() == 0) return poly1;
-
-    // Упорядочиваем многочлены так, чтобы poly1 имел наибольшую степень
-    if (poly2.getMaxDegree() > poly1.getMaxDegree()) {
-        Polynomials tmp = poly1;
-        poly1 = poly2;
-        poly2 = tmp;
-    }
+Polynomials GCF_PP_P(Polynomials a, Polynomials b){
     
-    // Основной цикл Евклида
-    while (poly2.getSize() > 0) {
-        
-        Polynomials remainder = MOD_PP_P(poly1, poly2); // Остаток от деления
-        
-        // Обновляем многочлены
-        poly1 = poly2;
-        poly2 = remainder;
-
-        // Проверяем упорядоченность многочленов
-        if (poly2.getMaxDegree() > poly1.getMaxDegree()) {
-        Polynomials tmp = poly1;
-        poly1 = poly2;
-        poly2 = tmp;
+    while ((a.getSize() != 0 && b.getSize() != 0) && (a.getStrReference().compare(0,1,"0")) && (b.getStrReference().compare(0,1,"0"))){
+        if (a.getMaxDegree() > b.getMaxDegree())
+        {
+            a = DIV_PP_P(a,b).second;
+        }
+        else
+        {
+            b = DIV_PP_P(b,a).second;
+        }
     }
-    }
-
-    // Возвращаем последний ненулевой остаток как НОД
-    return poly1;
+    return a;
 }
