@@ -65,3 +65,10 @@ NaturalNumbers& NaturalNumbers::operator=(const NaturalNumbers& number){
 	}
 	return *this;
 }
+
+NaturalNumbers::NaturalNumbers(std::string input)
+{
+	for(const char i: input)
+		this->digits.push_back(i - '0');
+	this->size = digits.size();
+}

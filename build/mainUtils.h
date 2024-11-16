@@ -39,6 +39,21 @@
 #include "../Rationals/Functions/MUL_QQ_Q/MUL_QQ_Q.h"
 #include "../Rationals/Functions/DIV_QQ_Q/DIV_QQ_Q.h"
 
+#include "../Polynomials/Source/Polynomials.h"
+#include "../Polynomials/Functions/ADD_PP_P/ADD_PP_P.h"
+#include "../Polynomials/Functions/SUB_PP_P/SUB_PP_P.h"
+#include "../Polynomials/Functions/MUL_PQ_P/MUL_PQ_P.h"
+#include "../Polynomials/Functions/MUL_Pxk_P/MUL_Pxk_P.h"
+#include "../Polynomials/Functions/LED_P_Q/LED_P_Q.h"
+#include "../Polynomials/Functions/DEG_P_N/DEG_P_N.h"
+#include "../Polynomials/Functions/FAC_P_Q/FAC_P_Q.h"
+#include "../Polynomials/Functions/MUL_PP_P/MUL_PP_P.h"
+#include "../Polynomials/Functions/DIV_PP_P/DIV_PP_P.h"
+#include "../Polynomials/Functions/MOD_PP_P/MOD_PP_P.h"
+#include "../Polynomials/Functions/GCF_PP_P/GCF_PP_P.h"
+#include "../Polynomials/Functions/DER_P_P/DER_P_P.h"
+#include "../Polynomials/Functions/NMR_P_P/NMR_P_P.h"
+
 #include <iostream>
 #include <vector>
 

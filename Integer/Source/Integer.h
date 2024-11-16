@@ -1,11 +1,11 @@
 #ifndef INTEGER_HEADER
 #define INTEGER_HEADER
 
-#include "StatusCode.h"
-#include "SignStatus.h"
 #include <iostream>
 #include <vector>
-
+#include <algorithm>
+#include "StatusCode.h"
+#include "SignStatus.h"
 
 class Integer{
 	private:
@@ -26,6 +26,10 @@ class Integer{
 		void setDigits(std::vector<size_t> newDigits);
 		void setSign(SignStatus newSign);
 		Integer& operator=(const Integer& number);
+		
+		Integer(std::string input);
+		bool operator > (const Integer& other);
+		bool operator == (const Integer& other);
 };
 
 #endif

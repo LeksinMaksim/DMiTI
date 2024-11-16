@@ -21,6 +21,7 @@ class NaturalNumbers{
 		void setDigits(std::vector<size_t> newDigits);
 		std::pair<StatusCode, size_t> getDigit(size_t position);
 		NaturalNumbers& operator=(const NaturalNumbers& number);
+		NaturalNumbers(std::string input);
 };
 
 #endif
