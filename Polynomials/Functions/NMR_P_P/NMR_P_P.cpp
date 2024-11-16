@@ -2,8 +2,17 @@
 
 Polynomials NMR_P_P(Polynomials polinom)
 {
-    Polynomials gcf = GCF_PP_P(polinom, DER_P_P(polinom)); // Найдём НОД исходного полинома и его производной
+    Polynomials gcf = GCF_PP_P(
+        polinom,
+        DER_P_P(polinom));  // Найдём НОД исходного полинома и его производной
     Polynomials result = Polynomials();
-    result.setElems(DIV_PP_P(polinom, gcf).first.getElems()); // поделим исходный полином на НОД
+    result.setElems(DIV_PP_P(polinom, gcf)
+                        .first.getElems());  // поделим исходный полином на НОД
     return result;
+}
+
+Polynomials NMR_P_P_Interactive()
+{
+    Polynomials polinom = NumberInput::readPolynomial("Введите полином: ");
+    return NMR_P_P(polinom);
 }

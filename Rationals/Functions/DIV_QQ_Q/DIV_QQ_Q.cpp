@@ -62,3 +62,10 @@ Rationals DIV_QQ_Q(Rationals fraction1, Rationals fraction2)
 
     return result;
 }
+
+Rationals DIV_QQ_Q_Interactive()
+{
+    Rationals fraction1 = NumberInput::readRational();
+    Rationals fraction2 = NumberInput::readRational();
+    return DIV_QQ_Q(fraction1, fraction2);
+}

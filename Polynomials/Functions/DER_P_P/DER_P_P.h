@@ -3,9 +3,11 @@
 
 #include "../../../Integer/Functions/MUL_ZZ_Z/MUL_ZZ_Z.h"
 #include "../../../Integer/Functions/SUB_ZZ_Z/SUB_ZZ_Z.h"
-
+#include "../../../build/NumberInput.h"
 #include "../../Source/Polynomials.h"
 
 Polynomials DER_P_P(Polynomials polinom);
 
-#endif 
+Polynomials DER_P_P_Interactive();
+
+#endif

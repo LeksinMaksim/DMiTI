@@ -1,25 +1,23 @@
 #include "MUL_PP_P.h"
-
-Polynomials MUL_PP_P(Polynomials poly1, Polynomials poly2) {
-    Polynomials result; // Результат умножения
+Polynomials MUL_PP_P(Polynomials poly1, Polynomials poly2)
+{
+    Polynomials result;  // Результат умножения
 
     // Перебираем элементы первого многочлена
-    for (auto elem1 : poly1.getElems()) {
-        Polynomials tempResult; // Временный результат для текущего элемента
+    for (auto elem1 : poly1.getElems())
+    {
+        Polynomials tempResult;  // Временный результат для текущего элемента
 
         // Перебираем элементы второго многочлена
-        for (auto elem2 : poly2.getElems()) {
+        for (auto elem2 : poly2.getElems())
+        {
             // Умножаем коэффициенты текущих элементов
-            Rationals newCoefficient = MUL_QQ_Q(
-                elem1->getNodeMultiplier(),
-                elem2->getNodeMultiplier()
-            );
+            Rationals newCoefficient = MUL_QQ_Q(elem1->getNodeMultiplier(),
+                                                elem2->getNodeMultiplier());
 
             // Складываем степени текущих элементов
-            Integer newDegree = ADD_ZZ_Z(
-                elem1->getNodeDegree(),
-                elem2->getNodeDegree()
-            );
+            Integer newDegree =
+                ADD_ZZ_Z(elem1->getNodeDegree(), elem2->getNodeDegree());
 
             // Создаем новый одночлен и добавляем его в временный результат
             Polynomials singleTerm;
@@ -32,4 +30,11 @@ Polynomials MUL_PP_P(Polynomials poly1, Polynomials poly2) {
     }
 
     return result;
+}
+
+Polynomials MUL_PP_P_Interactive()
+{
+    Polynomials poly1 = NumberInput::readPolynomial("Введите первый полином: ");
+    Polynomials poly2 = NumberInput::readPolynomial("Введите второй полином: ");
+    return MUL_PP_P(poly1, poly2);
 }

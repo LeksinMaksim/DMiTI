@@ -1,7 +1,9 @@
 #include "MUL_ZZ_Z.h"
 
-Integer MUL_ZZ_Z(Integer firstNumber, Integer secondNumber){
-    if (POZ_Z_D(firstNumber) == 0 || POZ_Z_D(secondNumber) == 0){
+Integer MUL_ZZ_Z(Integer firstNumber, Integer secondNumber)
+{
+    if (POZ_Z_D(firstNumber) == 0 || POZ_Z_D(secondNumber) == 0)
+    {
         return Integer(0);
     }
 
@@ -14,7 +16,8 @@ Integer MUL_ZZ_Z(Integer firstNumber, Integer secondNumber){
     NaturalNumbers secondNumberNaturalForm;
     secondNumberNaturalForm = TRANS_Z_N(absNumberSecond);
 
-    NaturalNumbers natResult = MUL_NN_N(firstNumberNaturalForm, secondNumberNaturalForm);
+    NaturalNumbers natResult =
+        MUL_NN_N(firstNumberNaturalForm, secondNumberNaturalForm);
 
     Integer result;
     result = TRANS_N_Z(natResult);
@@ -27,4 +30,13 @@ Integer MUL_ZZ_Z(Integer firstNumber, Integer secondNumber){
     }
 
     return result;
+}
+
+Integer MUL_ZZ_Z_Interactive()
+{
+    Integer firstNumber =
+        NumberInput::readInteger("Введите первое целое число: ");
+    Integer secondNumber =
+        NumberInput::readInteger("Введите второе целое число: ");
+    return MUL_ZZ_Z(firstNumber, secondNumber);
 }

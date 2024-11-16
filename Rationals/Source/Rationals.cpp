@@ -1,6 +1,7 @@
 #include "Rationals.h"
 
-Rationals::Rationals(){
+Rationals::Rationals()
+{
     this->numerator = Integer(0);
     this->denominator = NaturalNumbers(1);
     this->sign = NullStatus;
@@ -8,7 +9,8 @@ Rationals::Rationals(){
     this->denominatorSize = 0;
 }
 
-Rationals::Rationals(int numerator, size_t denominator){
+Rationals::Rationals(int numerator, size_t denominator)
+{
     this->numerator = Integer(numerator);
     this->denominator = NaturalNumbers(denominator);
     this->sign = this->numerator.getSign();
@@ -16,7 +18,8 @@ Rationals::Rationals(int numerator, size_t denominator){
     this->denominatorSize = this->denominator.getSize();
 }
 
-Rationals::Rationals(Integer numerator, NaturalNumbers denominator){
+Rationals::Rationals(Integer numerator, NaturalNumbers denominator)
+{
     this->numerator = numerator;
     this->denominator = denominator;
     this->sign = this->numerator.getSign();
@@ -24,70 +27,70 @@ Rationals::Rationals(Integer numerator, NaturalNumbers denominator){
     this->denominatorSize = this->denominator.getSize();
 }
 
+SignStatus Rationals::getSign() { return this->sign; }
 
-SignStatus Rationals::getSign(){
-    return this->sign;
-}
+Integer Rationals::getNumerator() { return this->numerator; }
 
-Integer Rationals::getNumerator(){
-    return this->numerator;
-}
+NaturalNumbers Rationals::getDenominator() { return this->denominator; }
 
-NaturalNumbers Rationals::getDenominator(){
-    return this->denominator;
-}
+size_t Rationals::getNumeratorSize() { return this->numeratorSize; }
 
-size_t Rationals::getNumeratorSize(){
-    return this->numeratorSize;
-}
+size_t Rationals::getDenominatorSize() { return this->denominatorSize; }
 
-size_t Rationals::getDenominatorSize(){
-    return this->denominatorSize;
-}
-
-std::vector<size_t> Rationals::getNumeratorDigits(){
+std::vector<size_t> Rationals::getNumeratorDigits()
+{
     return this->numerator.getDigits();
 }
 
-std::vector<size_t> Rationals::getDenominatorDigits(){
+std::vector<size_t> Rationals::getDenominatorDigits()
+{
     return this->denominator.getDigits();
 }
 
-std::string Rationals::getStrReference(){
-    return this->numerator.getStrReference() + "/" + this->denominator.getStrReference();
+std::string Rationals::getStrReference()
+{
+    return this->numerator.getStrReference() + "/" +
+           this->denominator.getStrReference();
 }
 
-void Rationals::setSign(SignStatus newSign){
+void Rationals::setSign(SignStatus newSign)
+{
     this->sign = newSign;
     this->numerator.setSign(newSign);
 }
 
-void Rationals::setNumerator(Integer newNumerator){
+void Rationals::setNumerator(Integer newNumerator)
+{
     this->numerator = newNumerator;
     this->sign = newNumerator.getSign();
     this->numeratorSize = newNumerator.getSize();
 }
 
-void Rationals::setNumerator(int newNumerator){
+void Rationals::setNumerator(int newNumerator)
+{
     Integer newNumeratorInt = Integer(newNumerator);
     this->numerator = newNumeratorInt;
     this->sign = newNumeratorInt.getSign();
     this->numeratorSize = newNumeratorInt.getSize();
 }
 
-void Rationals::setDenominator(NaturalNumbers newDenominator){
+void Rationals::setDenominator(NaturalNumbers newDenominator)
+{
     this->denominator = newDenominator;
     this->denominatorSize = newDenominator.getSize();
 }
 
-void Rationals::setDenominator(size_t newDenominator){
+void Rationals::setDenominator(size_t newDenominator)
+{
     NaturalNumbers newDenominatorNN = NaturalNumbers(newDenominator);
     this->denominator = newDenominatorNN;
     this->denominatorSize = newDenominatorNN.getSize();
 }
 
-Rationals& Rationals::operator=(const Rationals& fractionOther){
-    if(&fractionOther != this){
+Rationals& Rationals::operator=(const Rationals& fractionOther)
+{
+    if (&fractionOther != this)
+    {
         this->numerator = fractionOther.numerator;
         this->denominator = fractionOther.denominator;
         this->setSign(fractionOther.sign);
@@ -95,4 +98,33 @@ Rationals& Rationals::operator=(const Rationals& fractionOther){
         this->denominatorSize = fractionOther.denominatorSize;
     }
     return *this;
+}
+
+Rationals::Rationals(const std::string& fraction)
+{
+    size_t pos = fraction.find('/');
+    if (pos == std::string::npos)
+    {
+        // Если нет знака /, считаем что это целое число
+        this->numerator = Integer(fraction);
+        this->denominator = NaturalNumbers(1);
+    }
+    else
+    {
+        std::string num = fraction.substr(0, pos);
+        std::string den = fraction.substr(pos + 1);
+
+        if (den.empty() || den == "0")
+        {
+            // Защита от деления на ноль
+            throw std::invalid_argument("Знаменатель не может быть нулем");
+        }
+
+        this->numerator = Integer(num);
+        this->denominator = NaturalNumbers(den);
+    }
+
+    this->sign = this->numerator.getSign();
+    this->numeratorSize = this->numerator.getSize();
+    this->denominatorSize = this->denominator.getSize();
 }
