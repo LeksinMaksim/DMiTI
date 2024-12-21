@@ -119,6 +119,10 @@ $(BUILD_DIR)/$(POLYNOMIAL_DIR)/Functions/%.o: $(POLYNOMIAL_DIR)/Functions/%.cpp
 clean:
 	@echo "Cleaning..."
 	@rm -rf $(BUILD_DIR)
+	@rm -rf Integer
+	@rm -rf NaturalNumbers
+	@rm -rf Polynomials
+	@rm -rf Rationals
 
 # Запуск программы
 run: all

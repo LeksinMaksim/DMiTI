@@ -19,7 +19,7 @@ Polynomials ADD_PP_P(Polynomials poly1, Polynomials poly2)
     std::vector<Integer> deleted_indexes;
     // Получаем элементы из обоих многочленов
     size_t i = 0, j = 0;
-    int flag = 0;
+    //int flag = 0;
     // Основной цикл сложения
     for (auto el : poly1.getElems())
     {
